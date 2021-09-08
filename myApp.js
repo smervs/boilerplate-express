@@ -8,7 +8,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/json', function(req, res) {
-    res.json({ "message": "Hello json" });
+    let data = { "message": "Hello json" };
+
+    if (process.env.MESSAGE_STYLE) {
+        data = { "message": "HELLO JSON" };
+    }
+
+    res.json(data);
 });
 
 console.log("Hello World");
